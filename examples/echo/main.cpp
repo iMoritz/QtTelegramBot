@@ -6,9 +6,9 @@
 
 Telegram::Bot *bot;
 
-void newMessage(Telegram::Message message)
+void newMessage(uint64_t upd_id, Telegram::Message message)
 {
-    qDebug() << "new message:" << message;
+    qDebug() << "new message (" << upd_id << "): " << message;
 
     if (bot && message.type == Telegram::Message::TextType) {
         bot->sendMessage(message.from.id, message.string);
